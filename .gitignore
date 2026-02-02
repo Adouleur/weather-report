@@ -16,6 +16,9 @@
 # next.js
 /.next/
 /out/
+.swc
+swc
+**/node_modules/@next/swc-*
 
 # production
 /build

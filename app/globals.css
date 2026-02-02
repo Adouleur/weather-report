@@ -3,13 +3,30 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+
+  /* Glass styling – single source of truth */
+  --glass-panel-bg: rgba(255, 255, 255, 0.58);
+  --glass-panel-border: rgba(255, 255, 255, 0.6);
+  --glass-panel-blur: 14px;
+  --glass-panel-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+  --glass-panel-shadow-inset: inset 0 1px 0 rgba(255, 255, 255, 0.7);
+  --glass-panel-bg-hover: rgba(255, 255, 255, 0.72);
+  --glass-panel-border-hover: rgba(255, 255, 255, 0.85);
+  --glass-panel-shadow-hover: 0 14px 36px rgba(0, 0, 0, 0.12);
+  --glass-panel-shadow-inset-hover: inset 0 1px 0 rgba(255, 255, 255, 0.8);
+
+  --glass-soft-bg: rgba(255, 255, 255, 0.55);
+  --glass-soft-border: rgba(255, 255, 255, 0.6);
+  --glass-soft-blur: 12px;
+  --glass-soft-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+  --glass-soft-shadow-inset: inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  --glass-soft-bg-hover: rgba(255, 255, 255, 0.72);
+  --glass-soft-border-hover: rgba(255, 255, 255, 0.85);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -20,7 +37,35 @@
 }
 
 body {
-  background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+.appBackground {
+  min-height: 100vh;
+  background-image: url("https://images.unsplash.com/photo-1495616811223-4d98c6e9c869?w=1920");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  position: relative;
+}
+
+.appBackground::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.2) 0%,
+    rgba(0, 0, 0, 0.4) 100%
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+
+.glassPanel {
+  background: var(--glass-soft-bg);
+  backdrop-filter: blur(var(--glass-soft-blur));
+  -webkit-backdrop-filter: blur(var(--glass-soft-blur));
+  border: 1px solid var(--glass-soft-border);
 }

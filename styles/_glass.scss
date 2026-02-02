@@ -1,0 +1,44 @@
+// Glass mixins – use CSS variables from globals.css (:root)
+// Usage: @use '@/styles/glass' as glass; ... @include glass.panel;
+
+@mixin glass-panel {
+  background: var(--glass-panel-bg) !important;
+  backdrop-filter: blur(var(--glass-panel-blur));
+  -webkit-backdrop-filter: blur(var(--glass-panel-blur));
+  border: 1px solid var(--glass-panel-border);
+  box-shadow: var(--glass-panel-shadow), var(--glass-panel-shadow-inset);
+
+  &:hover {
+    background: var(--glass-panel-bg-hover) !important;
+    border-color: var(--glass-panel-border-hover);
+    box-shadow: var(--glass-panel-shadow-hover), var(--glass-panel-shadow-inset-hover);
+  }
+}
+
+@mixin glass-panel-static {
+  background: var(--glass-panel-bg) !important;
+  backdrop-filter: blur(var(--glass-panel-blur));
+  -webkit-backdrop-filter: blur(var(--glass-panel-blur));
+  border: 1px solid var(--glass-panel-border);
+  box-shadow: var(--glass-panel-shadow), var(--glass-panel-shadow-inset);
+}
+
+@mixin glass-soft {
+  background: var(--glass-soft-bg) !important;
+  backdrop-filter: blur(var(--glass-soft-blur));
+  -webkit-backdrop-filter: blur(var(--glass-soft-blur));
+  border: 1px solid var(--glass-soft-border);
+}
+
+@mixin glass-soft-with-hover {
+  background: var(--glass-soft-bg) !important;
+  backdrop-filter: blur(var(--glass-soft-blur));
+  -webkit-backdrop-filter: blur(var(--glass-soft-blur));
+  border: 1px solid var(--glass-soft-border);
+  box-shadow: var(--glass-soft-shadow), var(--glass-soft-shadow-inset);
+
+  &:hover {
+    background: var(--glass-soft-bg-hover) !important;
+    border-color: var(--glass-soft-border-hover);
+  }
+}
